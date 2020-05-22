@@ -4,8 +4,8 @@ module RedisWebManager
   class Engine < ::Rails::Engine
     isolate_namespace RedisWebManager
 
-    path = Engine.root.join('app', 'assets', 'config')
-    config.assets.precompile << "#{path}/redis_web_manager_manifest.js"
+    path = Engine.root.join('app', 'config')
+    #config.assets.precompile << "#{path}/redis_web_manager_manifest.js"
 
     config.generators do |generate|
       # Don't generate assets

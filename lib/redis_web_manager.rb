@@ -33,7 +33,7 @@ module RedisWebManager
       unless lifespan.is_a?(::ActiveSupport::Duration)
         raise(ArgumentError, 'Invalid lifespan, use like that 15.days, 15.minutes etc')
       end
-      valid = lifespan.to_i.positive?
+      valid = lifespan.to_i > 0
       raise(ArgumentError, 'Invalid lifespan, value must be greater than 0') unless valid
     end
   end

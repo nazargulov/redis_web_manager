@@ -2,15 +2,15 @@
 
 RedisWebManager::Engine.routes.draw do
   redises_keys = RedisWebManager.redises.keys
-  scope ':instance', instance: /#{redises_keys.join('|')}/ do
+  scope ':instance' do
     # Configuration
-    get :configuration, to: 'configuration#index'
+    get 'configuration' => 'configuration#index'
 
     # Information
-    get :information, to: 'information#index'
+    get 'information' => 'information#index'
 
     # Dashboard
-    get :dashboard, to: 'dashboard#index'
+    get 'dashboard' => 'dashboard#index'
 
     # Keys
     get 'keys' => 'keys#index'
@@ -20,14 +20,14 @@ RedisWebManager::Engine.routes.draw do
     delete 'keys' => 'keys#destroy', as: :destroy_key
 
     # Clients
-    get :clients, to: 'clients#index'
+    get 'clients' => 'clients#index'
 
     # Actions
-    delete :reset, to: 'actions#reset'
-    delete :flushdb, to: 'actions#flushdb'
-    delete :flushall, to: 'actions#flushall'
+    delete 'reset' => 'actions#reset'
+    delete 'flushdb' => 'actions#flushdb'
+    delete 'flushall' => 'actions#flushall'
   end
 
   # Root
-  root 'dashboard#index'
+  root to: 'dashboard#index'
 end
